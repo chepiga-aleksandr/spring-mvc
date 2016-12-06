@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+
+    <bean id="employeeService" class="ua.edu.khibs.resalex.service.EmployeeService"/>
+    <bean id="employeeDao" class="ua.edu.khibs.resalex.Dao.hibernate.HEmployeeDao"/>
+
+    <bean id="restaurantService" class="ua.edu.khibs.resalex.service.RestaurantService" />
+    <bean id="restaurantDao" class="ua.edu.khibs.resalex.Dao.hibernate.HRestaurantDao"/>
+
+
+</beans>
