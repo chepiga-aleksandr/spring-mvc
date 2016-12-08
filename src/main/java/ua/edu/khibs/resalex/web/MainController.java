@@ -13,7 +13,6 @@ public class MainController {
 
     private RestaurantService restaurantService;
 
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Map<String, Object> model) {
         model.put("restaurantService", restaurantService.getInfo());

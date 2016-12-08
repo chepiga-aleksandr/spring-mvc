@@ -6,12 +6,12 @@
 </head>
 <body>
 
-<%--<h1>--%>
-    <%--${restaurantService.name}--%>
-    <%--${restaurantService.address}--%>
-    <%--${restaurantService.eMail}--%>
-    <%--${restaurantService.phoneNumber}--%>
-<%--</h1>--%>
+<h1>
+    ${restaurantService.name}
+    ${restaurantService.address}
+    ${restaurantService.eMail}
+    ${restaurantService.phoneNumber}
+</h1>
 
 <h1>
     <c:forEach var="employee" items="${employees}" >
