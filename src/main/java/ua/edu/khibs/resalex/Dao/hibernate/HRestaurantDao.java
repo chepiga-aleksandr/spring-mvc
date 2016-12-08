@@ -12,7 +12,9 @@ public class HRestaurantDao implements RestaurantDao {
     @Override
     public Restaurant allInformation() {
         Session session = sessionFactory.getCurrentSession();
-        return (Restaurant) session.createQuery("select r from Restaurant r");
+        return session.createQuery("select r from Restaurant r", Restaurant.class).uniqueResult();
+
+
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

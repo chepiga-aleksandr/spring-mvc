@@ -13,7 +13,6 @@ public class HEmployeeDao implements EmployeeDao {
 
     private SessionFactory sessionFactory;
 
-    @Transactional
     @Override
     public void save(Employee employee) {
         Session session = sessionFactory.getCurrentSession();
