@@ -10,21 +10,18 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Position</th>
-
     </tr>
-<c:forEach var="employee" items="${employees}" >
 
-<tr>
-    <td><a href="/employee?employeeName=${employee.name}">${employee.name}</a></td>
-    <td>${employee.surname}</td>
-    <td>${employee.position}</td>
+    <c:forEach var="employee" items="${employees}">
 
-</tr>
-</c:forEach>
+        <tr>
+            <td><a href="/employee?employeeName=${employee.name}">${employee.name}</a></td>
+            <td>${employee.surname}</td>
+            <td>${employee.position}</td>
+        </tr>
+    </c:forEach>
 
 </table>
-
-</tr>
 
 </body>
 </html>

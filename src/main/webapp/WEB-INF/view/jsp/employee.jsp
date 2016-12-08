@@ -12,13 +12,13 @@
         <th>Position</th>
         <th>Salary</th>
     </tr>
-<tr>
-    <td>${employee.name}</td>
-    <td>${employee.surname}</td>
-    <td>${employee.position}</td>
-    <td>${employee.salary}</td>
-</tr>
+    <tr>
+        <td>${employee.name}</td>
+        <td>${employee.surname}</td>
+        <td>${employee.position}</td>
+        <td>${employee.salary}</td>
+    </tr>
 </table>
-</tr>
+
 </body>
 </html>

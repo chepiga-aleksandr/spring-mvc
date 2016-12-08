@@ -6,27 +6,49 @@
 </head>
 <body>
 
-<h1>
-    ${restaurantService.name}
-    ${restaurantService.address}
-    ${restaurantService.eMail}
-    ${restaurantService.phoneNumber}
-</h1>
 
-<h1>
-    <c:forEach var="employee" items="${employees}" >
+
+<table border="1">
+    <tr>
+        <th>  ${restaurantInfo.name}<br>
+              ${restaurantInfo.address}<br>
+              ${restaurantInfo.eMail}<br>
+              ${restaurantInfo.phoneNumber}<br>
+        </th>
+        <th>
+            <img src="/resimg.jpg">
+        </th>
+    </tr>
+</table><br><br>
+
+<table border="1" style="align-items: center">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Foto</th>
+    </tr>
+    <c:forEach var="employee" items="${employees}">
         <tr>
             <td>${employee.name}</td>
             <td>${employee.surname}</td>
-            <td>${employee.position}</td>
+            <td>${employee.foto}</td>
+    </tr>
+    </c:forEach>
+</table><br><br>
+
+<h1>MENU</h1>
+
+<table border="1">
+    <tr>
+        <td>Name Menu</td>
+    </tr>
+    <c:forEach var="menu" items="${allMenu}">
+        <tr>
+            <td>${menu.name}</td>
         </tr>
     </c:forEach>
+</table>
 
-</h1>
-
-<h1>Hello GoIT. It is now: ${currentTime}</h1>
-
-<a href="/employees">Show all employees</a>
 
 </body>
 </html>
