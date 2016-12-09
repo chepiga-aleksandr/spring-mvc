@@ -24,7 +24,7 @@ public class Menu {
             joinColumns = @JoinColumn(name = "menu_id"),
             inverseJoinColumns = @JoinColumn (name = "dishes_id")
     )
-    private List<Dishes> listOfDishes;
+    private List<Dish> listOfDishes;
 
     public Long getId() {
         return id;
@@ -42,11 +42,11 @@ public class Menu {
         this.name = name;
     }
 
-    public List<Dishes> getListOfDishes() {
+    public List<Dish> getListOfDishes() {
         return listOfDishes;
     }
 
-    public void setListOfDishes(List<Dishes> listOfDishes) {
+    public void setListOfDishes(List<Dish> listOfDishes) {
         this.listOfDishes = listOfDishes;
     }
 

@@ -27,8 +27,8 @@ public class Employee {
     @Column(name="salary")
     private Float salary;
 
-    @Column (name = "foto")
-    private String foto;
+    @Column (name = "photo")
+    private String photo;
 
     public Long getId() {
         return id;
@@ -70,12 +70,12 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @Override

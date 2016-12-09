@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface EmployeeDao {
 
-    void save(Employee employee);
+    void saveEmployee(Employee employee);
 
-    Employee load(Long id);
+    Employee loadEmployee(Long id);
 
-    List findAll();
+    List findAllEmployees();
 
-    void remove(Employee employee);
+    void removeEmployee(Employee employee);
 
-    Employee findByName(String name);
+    Employee findEmployeeByName(String name);
 }

@@ -5,50 +5,48 @@
     <title>Title</title>
 </head>
 <body>
-
-
-
 <table border="1">
     <tr>
-        <th>  ${restaurantInfo.name}<br>
-              ${restaurantInfo.address}<br>
-              ${restaurantInfo.eMail}<br>
-              ${restaurantInfo.phoneNumber}<br>
+        <th>  ${restaurant.name}<br>
+            ${restaurant.address}<br>
+            ${restaurant.eMail}<br>
+            ${restaurant.phoneNumber}<br>
         </th>
         <th>
-            <img src="/resimg.jpg">
+            <img src="${restaurant.photo}" width="200"/>
         </th>
     </tr>
-</table><br><br>
-
+</table>
+<br><br>
+_____________________________________________________________________________________________________________________
+<table style="align-items: center">
+    <tr>
+        <th>Name</th>
+        <th>Weight</th>
+        <th>Price</th>
+    </tr>
+    <tr>
+        <td>${allDishes.name}</td>
+        <td>${allDishes.weight}</td>
+        <td>${allDishes.price}</td>
+    </tr>
+</table>
+_____________________________________________________________________________________________________________________
 <table border="1" style="align-items: center">
     <tr>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Foto</th>
+        <th>Photo</th>
     </tr>
     <c:forEach var="employee" items="${employees}">
         <tr>
             <td>${employee.name}</td>
             <td>${employee.surname}</td>
-            <td>${employee.foto}</td>
-    </tr>
-    </c:forEach>
-</table><br><br>
-
-<h1>MENU</h1>
-
-<table border="1">
-    <tr>
-        <td>Name Menu</td>
-    </tr>
-    <c:forEach var="menu" items="${allMenu}">
-        <tr>
-            <td>${menu.name}</td>
+            <td><img src="${employee.photo}" width="100"></td>
         </tr>
     </c:forEach>
 </table>
-
+<br><br>
 
 </body>
 </html>

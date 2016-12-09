@@ -14,13 +14,13 @@ public class HEmployeeDao implements EmployeeDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public void save(Employee employee) {
+    public void saveEmployee(Employee employee) {
         Session session = sessionFactory.getCurrentSession();
         session.save(employee);
     }
 
     @Override
-    public Employee load(Long id) {
+    public Employee loadEmployee(Long id) {
         Employee result = sessionFactory.getCurrentSession().load(Employee.class, id);
         if (result == null) {
             throw new RuntimeException("Cannot find Employee by id: " + id);
@@ -29,14 +29,14 @@ public class HEmployeeDao implements EmployeeDao {
     }
 
     @Override
-    public List findAll() {
+    public List findAllEmployees() {
 
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select e from Employee e").list();
     }
 
     @Override
-    public Employee findByName(String name) {
+    public Employee findEmployeeByName(String name) {
 
         Session session = sessionFactory.getCurrentSession();
 
@@ -46,7 +46,7 @@ public class HEmployeeDao implements EmployeeDao {
     }
 
     @Override
-    public void remove(Employee employee) {
+    public void removeEmployee(Employee employee) {
         sessionFactory.getCurrentSession().delete(employee);
     }
 

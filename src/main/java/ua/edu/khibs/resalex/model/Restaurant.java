@@ -26,6 +26,9 @@ public class Restaurant {
     @Column (name = "e_mail")
     private String eMail;
 
+    @Column (name = "photo")
+    private String photo;
+
     public Long getId() {
         return id;
     }
@@ -66,14 +69,23 @@ public class Restaurant {
         this.eMail = eMail;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
-        return "RestaurantDao{" +
+        return "Restaurant{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", eMail='" + eMail + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }

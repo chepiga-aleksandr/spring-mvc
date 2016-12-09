@@ -14,4 +14,7 @@
     <bean id="menuService" class="ua.edu.khibs.resalex.service.MenuService" />
     <bean id="menuDao" class="ua.edu.khibs.resalex.Dao.hibernate.HMenuDao" />
 
+    <bean id="dishService" class="ua.edu.khibs.resalex.service.DishService" />
+    <bean id="dishDao" class="ua.edu.khibs.resalex.Dao.hibernate.HDishDao" />
+
 </beans>

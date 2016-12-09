@@ -12,13 +12,12 @@ public class EmployeeService {
 
     @Transactional
     public List<Employee> getEmployees() {
-
-        return employeeDao.findAll();
+        return employeeDao.findAllEmployees();
     }
 
     @Transactional
     public Employee getEmployeeByName(String employeeName) {
-        return employeeDao.findByName(employeeName);
+        return employeeDao.findEmployeeByName(employeeName);
     }
 
     @Transactional

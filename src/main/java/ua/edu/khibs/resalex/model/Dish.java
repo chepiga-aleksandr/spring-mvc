@@ -5,8 +5,8 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "dishes")
-public class Dishes {
+@Table (name = "dish")
+public class Dish {
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -22,6 +22,9 @@ public class Dishes {
 
     @Column (name = "price")
     private int price;
+
+    @Column (name = "photo")
+    private String photo;
 
     public Long getId() {
         return id;
@@ -55,13 +58,22 @@ public class Dishes {
         this.price = price;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
-        return "Dishes{" +
+        return "Dish{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", weight=" + weight +
                 ", price=" + price +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }
