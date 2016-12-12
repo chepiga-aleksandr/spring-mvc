@@ -28,6 +28,3 @@ public class HMenuDao implements MenuDao {
         this.sessionFactory = sessionFactory;
     }
 }
-
-
-//"select e from Employee e where e.name like :name");
