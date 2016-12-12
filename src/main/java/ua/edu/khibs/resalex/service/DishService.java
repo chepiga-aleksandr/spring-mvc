@@ -8,10 +8,10 @@ import java.util.List;
 
 public class DishService {
 
-    DishDao dishDao;
+    private DishDao dishDao;
 
     @Transactional
-    public List getAllDish() {
+    public List<Dish> getAllDish() {
         return dishDao.findAllDishes();
     }
 
@@ -20,6 +20,7 @@ public class DishService {
         return dishDao.findDishByName(dishName);
     }
 
+    @Transactional
     public void setDishDao(DishDao dishDao) {
         this.dishDao = dishDao;
     }

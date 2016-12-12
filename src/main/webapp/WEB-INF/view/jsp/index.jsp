@@ -4,61 +4,45 @@
 <head>
     <title>Title</title>
 </head>
+<body>
+_________________________________________________________________________________________________________________
+<table border="1">
+    <tr>
+        <th><h1>${restaurant.name}</h1><br>
+        ${restaurant.address}   ${restaurant.eMail}   ${restaurant.phoneNumber}<br>
+        <a href="restaurant">Схема ресторана</a><br>
+        <a href="employees">Наш персонал</a></th>
 
-    <table border="1">
-        <tr>
-            <th>  ${restaurant.name}<br>
-                ${restaurant.address}<br>
-                ${restaurant.eMail}<br>
-                ${restaurant.phoneNumber}<br>
-            </th>
-            <th>
-                <img src="${restaurant.photo}" width="200"/>
-            </th>
-        </tr>
-    </table>
-    <br>
-    _____________________________________________________________________________________________________________________
-    <table border="1" style="align-content: center">
-        <tr>
-            <th>Name Menu</th>
-        </tr>
-        <c:forEach var="menu" items="${allMenu}">
-            <tr>
-                <td>${menu.name}</td>
-            </tr>
-        </c:forEach>
-    </table>
-    <br>
+    </tr>
+</table>
+<br>
+_____________________________________________________________________________________________________________________
 
-    <%--<table border = "1" style="align-items: center">--%>
-    <%--<tr>--%>
-    <%--<th>Name</th>--%>
-    <%--<th>Price</th>--%>
-    <%--</tr>--%>
-    <%--<c:forEach var = "dish" items="${dishes}">--%>
-    <%--<tr>--%>
-    <%--<td>${dish.name}</td>--%>
-    <%--<td>${dish.price}</td>--%>
-    <%--</tr>--%>
-    <%--</c:forEach>--%>
-    <%--</table>--%>
-    _____________________________________________________________________________________________________________________
-    <table border="1" style="align-items: center">
+<table border="1" style="align-content: center">
+    <tr>
+        <th>Name Menu</th>
+        <th>List of dishes</th>
+    </tr>
+    <c:forEach var="menu" items="${allMenu}">
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Photo</th>
-        </tr>
-        <c:forEach var="employee" items="${employees}">
-            <tr>
-                <td>${employee.name}</td>
-                <td>${employee.surname}</td>
-                <td><img src="${employee.photo}" width="100"></td>
-            </tr>
-        </c:forEach>
-    </table>
-    <br><br>
+            <td>${menu.name}</td>
 
-    </body>
-</html>
+            <td>
+                <c:forEach items="${menu.listOfDishes}" var="dish">
+                    <ul>
+                        <li><a href="/dish?dishName=${dish.name}">${dish.name}</a> , weight - ${dish.weight} (грамм),
+                            price - ${dish.price} (грн.)
+                        </li>
+
+                    </ul>
+                </c:forEach>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
+<br>
+______________________________________________________________________________________________________
+<form action="/dish?dishName=${dish.name}" method="GET">
+    <p>Введите название искомого блюда: <input type="text" name="dishName"></p>
+    <input type="submit" value="Искать"/>
+</form><br><br>

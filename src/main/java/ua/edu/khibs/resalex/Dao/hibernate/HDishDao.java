@@ -13,15 +13,14 @@ public class HDishDao implements DishDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public List findAllDishes() {
+    public List<Dish> findAllDishes() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("select d from Dish d").list();
+        return session.createQuery("select d from Dish d", Dish.class).list();
     }
 
     @Override
     public Dish findDishByName(String name) {
         Session session = sessionFactory.getCurrentSession();
-
         Query query = session.createQuery("select d from Dish d where d.name like :name");
         query.setParameter("name", name);
         return (Dish) query.uniqueResult();

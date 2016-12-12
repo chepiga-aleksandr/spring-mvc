@@ -3,7 +3,6 @@ package ua.edu.khibs.resalex.Dao.hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import org.springframework.transaction.annotation.Transactional;
 import ua.edu.khibs.resalex.Dao.EmployeeDao;
 import ua.edu.khibs.resalex.model.Employee;
 
@@ -30,19 +29,16 @@ public class HEmployeeDao implements EmployeeDao {
 
     @Override
     public List findAllEmployees() {
-
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select e from Employee e").list();
     }
 
     @Override
-    public Employee findEmployeeByName(String name) {
-
+    public List findEmployeeByPosition(String position) {
         Session session = sessionFactory.getCurrentSession();
-
-        Query query = session.createQuery("select e from Employee e where e.name like :name");
-        query.setParameter("name", name);
-        return (Employee) query.uniqueResult();
+        Query query = session.createQuery("select e from Employee e where e.position like :position");
+        query.setParameter("position", position);
+        return query.getResultList();
     }
 
     @Override

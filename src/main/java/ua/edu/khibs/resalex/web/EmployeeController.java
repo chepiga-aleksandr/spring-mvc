@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import ua.edu.khibs.resalex.service.EmployeeService;
 
 import java.util.Map;
@@ -17,17 +15,17 @@ public class EmployeeController {
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Map<String, Object> model) {
-        model.put("employees", employeeService.getEmployees());
+        model.put("employees", employeeService.getEmployeeByPosition("WAITER"));
         return "employees";
     }
 
-    @RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public ModelAndView employees(@RequestParam("employeeName") String employeeName) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("employee", employeeService.getEmployeeByName(employeeName));
-        modelAndView.setViewName("employee");
-        return modelAndView;
-    }
+//    @RequestMapping(value = "/employee", method = RequestMethod.GET)
+//    public ModelAndView employees(@RequestParam("employeePosition") String employeePosition) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.addObject("employee", employeeService.getEmployeeByPosition(employeePosition));
+//        modelAndView.setViewName("employee");
+//        return modelAndView;
+//    }
 
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {

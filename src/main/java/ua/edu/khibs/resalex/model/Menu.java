@@ -22,7 +22,7 @@ public class Menu {
     @JoinTable (
             name = "list_of_dishes",
             joinColumns = @JoinColumn(name = "menu_id"),
-            inverseJoinColumns = @JoinColumn (name = "dishes_id")
+            inverseJoinColumns = @JoinColumn (name = "dish_id")
     )
     private List<Dish> listOfDishes;
 

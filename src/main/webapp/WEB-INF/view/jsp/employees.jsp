@@ -10,18 +10,17 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Position</th>
+        <th>Photo</th>
     </tr>
-
     <c:forEach var="employee" items="${employees}">
-
         <tr>
-            <td><a href="/employee?employeeName=${employee.name}">${employee.name}</a></td>
+            <td>${employee.name}</td>
             <td>${employee.surname}</td>
             <td>${employee.position}</td>
+            <td><img src="${employee.photo}" width="300"></td>
         </tr>
     </c:forEach>
 
 </table>
-
 </body>
 </html>
