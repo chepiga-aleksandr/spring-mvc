@@ -20,9 +20,8 @@ public class Employee {
     @Column(name="surname")
     private String surname;
 
-    @Enumerated(EnumType.STRING)
     @Column(name="position")
-    private Position position;
+    private String position;
 
     @Column(name="salary")
     private Float salary;
@@ -54,11 +53,11 @@ public class Employee {
         this.surname = surname;
     }
 
-    public Position getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 
@@ -107,7 +106,7 @@ public class Employee {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", position=" + position +
+                ", position='" + position + '\'' +
                 ", salary=" + salary +
                 '}';
     }

@@ -3,6 +3,7 @@ package ua.edu.khibs.resalex.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table (name = "dish")
@@ -25,6 +26,14 @@ public class Dish {
 
     @Column (name = "photo")
     private String photo;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable (
+            name = "dish_to_ingredient",
+            joinColumns = @JoinColumn(name = "dish_id"),
+            inverseJoinColumns = @JoinColumn (name = "ingredient_id")
+    )
+    private List<Ingredient> listOfIngredient;
 
     public Long getId() {
         return id;
@@ -66,6 +75,14 @@ public class Dish {
         this.photo = photo;
     }
 
+    public List<Ingredient> getListOfIngredient() {
+        return listOfIngredient;
+    }
+
+    public void setListOfIngredient(List<Ingredient> listOfIngredient) {
+        this.listOfIngredient = listOfIngredient;
+    }
+
     @Override
     public String toString() {
         return "Dish{" +
@@ -74,6 +91,7 @@ public class Dish {
                 ", weight=" + weight +
                 ", price=" + price +
                 ", photo='" + photo + '\'' +
+                ", listOfIngredient=" + listOfIngredient +
                 '}';
     }
 }

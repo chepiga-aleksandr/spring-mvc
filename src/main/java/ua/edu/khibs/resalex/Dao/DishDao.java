@@ -10,7 +10,7 @@ public interface DishDao {
 
     Dish loadDish(Long id);
 
-    List findAllDishes();
+    List<Dish> findAllDishes();
 
     void removeDish(Dish dish);
 

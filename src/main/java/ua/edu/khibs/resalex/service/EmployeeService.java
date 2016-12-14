@@ -16,13 +16,12 @@ public class EmployeeService {
     }
 
     @Transactional
-    public Employee getEmployeeByName(String employeeName) {
-        return employeeDao.findEmployeeByName(employeeName);
+    public List<Employee> getEmployeeByPosition (String position) {
+        return employeeDao.findEmployeeByPosition(position);
     }
 
     @Transactional
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
-
 }
