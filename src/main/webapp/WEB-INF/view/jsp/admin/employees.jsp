@@ -21,7 +21,7 @@
             <td>${employee.position}</td>
             <td><img src="${employee.photo}" width="100"></td>
             <td>
-            <a href=/admin/employee/employeeId=${employee.id}">Edit info</a>
+            <a href="/admin/employeeId=${employee.id}">Edit info</a>
             </td>
         </tr>
     </c:forEach>

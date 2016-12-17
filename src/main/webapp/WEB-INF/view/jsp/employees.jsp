@@ -5,18 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<table style="align-items: center">
+<table border="1" style="align-items: center">
     <tr>
         <th>First Name</th>
-        <th>Last Name</th>
-        <th>Position</th>
-        <th>Photo</th>
+         <th>Photo</th>
     </tr>
     <c:forEach var="employee" items="${employees}">
         <tr>
             <td>${employee.name}</td>
-            <td>${employee.surname}</td>
-            <td>${employee.position}</td>
             <td><img src="${employee.photo}" width="300"></td>
         </tr>
     </c:forEach>

@@ -15,4 +15,10 @@ public interface EmployeeDao {
     void removeEmployee(Employee employee);
 
     List<Employee> findEmployeeByPosition (String position);
+
+    Employee findEmployeeById (Long id);
+
+    void updateEmployee (Long id, Employee newEmployee);
+
+    Employee setInformation (String name, String surname, String position, double salary);
 }

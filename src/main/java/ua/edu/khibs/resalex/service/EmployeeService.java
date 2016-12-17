@@ -16,12 +16,29 @@ public class EmployeeService {
     }
 
     @Transactional
-    public List<Employee> getEmployeeByPosition (String position) {
+    public Employee getEmployeeById(Long id) {
+        return employeeDao.findEmployeeById(id);
+    }
+
+    @Transactional
+    public List<Employee> getEmployeeByPosition(String position) {
         return employeeDao.findEmployeeByPosition(position);
+    }
+
+    @Transactional
+    public void updateEmployeeInfo(Long id, Employee newEmployee) {
+        employeeDao.updateEmployee(id, newEmployee);
+    }
+
+    @Transactional
+    public Employee setInformationUpdateEmployee (String name, String surname, String position, double salary){
+        return employeeDao.setInformation(name, surname, position, salary );
     }
 
     @Transactional
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
+
+
 }
