@@ -36,9 +36,25 @@ public class EmployeeService {
     }
 
     @Transactional
+    public void deleteEmployee (Employee employee) {
+        employeeDao.removeEmployee(employee);
+    }
+
+    @Transactional
+    public void addNewEmployee(String name, String surname, String position, Float salary) {
+
+        Employee employee = new Employee();
+        employee.setName(name);
+        employee.setSurname(surname);
+        employee.setPosition(position);
+        employee.setSalary(salary);
+
+        employeeDao.saveNewEmployee(employee);
+    }
+
+    @Transactional
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
-
 
 }

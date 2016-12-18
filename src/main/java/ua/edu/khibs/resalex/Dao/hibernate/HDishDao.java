@@ -27,12 +27,29 @@ public class HDishDao implements DishDao {
     }
 
     @Override
-    public void saveDish(Dish dish) {
+    public void updateDish(Long id, Dish newDish) {
+        Session session = sessionFactory.getCurrentSession();
+        Dish dish = session.get(Dish.class, id);
+        session.update(dish);
     }
 
     @Override
-    public Dish loadDish(Long id) {
-        return null;
+    public Dish setInformation(String name, Integer weight, Integer price) {
+        Dish dish = new Dish();
+        dish.setName(name);
+        dish.setWeight(weight);
+        dish.setPrice(price);
+        return dish;
+    }
+    @Override
+    public Dish findDishById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select d from Dish d where d.id = :id");
+        query.setParameter("id", id);
+        return (Dish) query.uniqueResult();
+    }
+    @Override
+    public void saveDish(Dish dish) {
     }
 
     @Override

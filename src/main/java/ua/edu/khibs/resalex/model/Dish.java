@@ -19,10 +19,10 @@ public class Dish {
     private String name;
 
     @Column (name = "weight")
-    private int weight;
+    private Integer weight;
 
     @Column (name = "price")
-    private int price;
+    private Integer price;
 
     @Column (name = "photo")
     private String photo;
@@ -55,7 +55,7 @@ public class Dish {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
@@ -63,7 +63,7 @@ public class Dish {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

@@ -21,11 +21,15 @@
             <td>${employee.position}</td>
             <td><img src="${employee.photo}" width="100"></td>
             <td>
-            <a href="/admin/employeeId=${employee.id}">Edit info</a>
+            <p><a href="/admin/employeeId=${employee.id}">Edit</a></p>
+            <p><a href="/admin/deleteEmployeeId=${employee.id}">Delete</a></p>
             </td>
         </tr>
     </c:forEach>
 </table>
+<br>
+
+<button onclick="location.href='/admin/newEmployee'">Create new employee</button>
 
 </body>
 </html>

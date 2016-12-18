@@ -28,33 +28,62 @@ public class EmployeeController {
     public ModelAndView adminEmployee(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("employee", employeeService.getEmployeeById(id));
-        modelAndView.setViewName("admin/employee");
+        modelAndView.setViewName("admin/employeeAdmin");
         return modelAndView;
     }
 
-        @RequestMapping(value = "/admin/employees", method = RequestMethod.GET)
-        public String adminEmployees (Map < String, Object > model){
-            model.put("employees", employeeService.getEmployees());
-            return "admin/employees";
-        }
+    @RequestMapping(value = "/admin/employees", method = RequestMethod.GET)
+    public String adminEmployees(Map<String, Object> model) {
+        model.put("employees", employeeService.getEmployees());
+        return "admin/employeesAdmin";
+    }
 
-        @RequestMapping(value = "/admin/updateEmployeeId={id}", method = RequestMethod.GET)
-        public ModelAndView updateExistingEmployee (@PathVariable Long id,
-                                     @RequestParam("employeeName") String name,
+    @RequestMapping(value = "/admin/updateEmployeeId={id}", method = RequestMethod.POST)
+    public ModelAndView updateExistingEmployee(@PathVariable Long id,
+                                               @RequestParam("employeeName") String name,
+                                               @RequestParam("employeeSurname") String surame,
+                                               @RequestParam("employeePosition") String position,
+                                               @RequestParam("employeeSalary") double salary) {
+        ModelAndView modelAndView = new ModelAndView();
+        Employee updateEmployee = employeeService.setInformationUpdateEmployee(name, surame, position, salary);
+        employeeService.updateEmployeeInfo(id, updateEmployee);
+        modelAndView.addObject("employee", employeeService.getEmployeeById(id));
+        modelAndView.setViewName("redirect:../admin/employees");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/newEmployee", method = RequestMethod.GET)
+    public ModelAndView addEmployeeForm() {
+        ModelAndView modelAndView = new ModelAndView();
+
+
+        modelAndView.setViewName("admin/newEmployee");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/newEmployee", method = RequestMethod.POST)
+    public ModelAndView addNewEmployee(@RequestParam("employeeName") String name,
                                      @RequestParam("employeeSurname") String surame,
                                      @RequestParam("employeePosition") String position,
-                                     @RequestParam("employeeSalary") double salary)
-        {
-            ModelAndView modelAndView = new ModelAndView();
-            Employee updateEmployee = employeeService.setInformationUpdateEmployee(name, surame, position, salary);
-            employeeService.updateEmployeeInfo(id, updateEmployee);
-            modelAndView.addObject("employee", employeeService.getEmployeeById(id));
-            modelAndView.setViewName("/admin/updateEmployeeId");
-            return modelAndView;
-        }
-
-        @Autowired
-        public void setEmployeeService (EmployeeService employeeService){
-            this.employeeService = employeeService;
-        }
+                                     @RequestParam("employeeSalary") Float salary) {
+        ModelAndView modelAndView = new ModelAndView();
+        employeeService.addNewEmployee(name, surame, position, salary);
+        modelAndView.setViewName("redirect:../admin/employees");
+        return modelAndView;
     }
+
+    @RequestMapping(value = "/admin/deleteEmployeeId={id}", method = RequestMethod.GET)
+    public ModelAndView deleteEmployee(@PathVariable Long id) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        employeeService.deleteEmployee(employeeService.getEmployeeById(id));
+        modelAndView.addObject("employees", employeeService.getEmployees());
+        modelAndView.setViewName("admin/employeesAdmin");
+        return modelAndView;
+    }
+
+    @Autowired
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+}

@@ -13,7 +13,7 @@ public class HEmployeeDao implements EmployeeDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public void saveEmployee(Employee employee) {
+    public void saveNewEmployee(Employee employee) {
         Session session = sessionFactory.getCurrentSession();
         session.save(employee);
     }
@@ -53,19 +53,6 @@ public class HEmployeeDao implements EmployeeDao {
     public void updateEmployee(Long id, Employee newEmployee) {
         Session session = sessionFactory.getCurrentSession();
         Employee employee = session.get(Employee.class, id);
-
-        if (newEmployee.getName() != null) {
-            employee.setName(newEmployee.getName());
-        }
-        if (newEmployee.getSurname() != null) {
-            employee.setSurname(newEmployee.getSurname());
-        }
-        if (newEmployee.getPosition() != null) {
-            employee.setPosition(newEmployee.getPosition());
-        }
-        if (newEmployee.getSalary() != null) {
-            employee.setSalary(newEmployee.getSalary());
-        }
         session.update(employee);
     }
 
