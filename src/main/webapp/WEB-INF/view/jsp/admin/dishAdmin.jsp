@@ -5,26 +5,24 @@
 </head>
 <body>
 
-<table border="1" style="align-items: center">
-    <tr>
-        <th>Name</th>
-        <th>Weight</th>
-        <th>Price</th>
-        <th>Photo</th>
-        <th>List of ingredients</th>
-    </tr>
-    <tr>
-        <td>${dish.name}</td>
-        <td>${dish.weight}</td>
-        <td>${dish.price}</td>
-        <td><img src="${dish.photo}" width="200"></td>
-        <td><c:forEach items="${dish.listOfIngredient}" var="listOfIngredient">
-            <ul>
-                <li>${listOfIngredient.name}</li>
-            </ul>
-        </c:forEach></td>
-    </tr>
-</table>
+<form action="/admin/updateDishId=${dish.id}" method="post">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input autocomplete="off" type="text" name="dishName" value="${dish.name}"></td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td><input autocomplete="off" type="text" name="dishWeight" value="${dish.weight}"></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input autocomplete="off" type="text" name="dishPrice" value="${dish.price}"></td>
+        </tr>
+
+    </table>
+    <button>Submit</button>
+</form>
 
 </body>
 </html>

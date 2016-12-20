@@ -28,7 +28,7 @@
                 </ul>
             </c:forEach></td>
             <td>
-                <p><a href="/admin/editDishId=${dish.id}">Edit</a></p>
+                <p><a href="/admin/dishId=${dish.id}">Edit</a></p>
                 <p><a href="/admin/deleteDishId=${dish.id}">Delete</a></p>
             </td>
         </tr>
@@ -36,7 +36,7 @@
 </table>
 <br>
 
-<button onclick="location.href='/admin/newEmployee'">Create new employee</button>
+<button onclick="location.href='/admin/newDish'">Create new dish</button>
 
 </body>
 </html>

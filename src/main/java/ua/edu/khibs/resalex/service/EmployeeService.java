@@ -26,12 +26,12 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void updateEmployeeInfo(Long id, Employee newEmployee) {
-        employeeDao.updateEmployee(id, newEmployee);
+    public void updateEmployeeInfo(Long id, Employee updateEmployee) {
+        employeeDao.updateEmployee(id, updateEmployee);
     }
 
     @Transactional
-    public Employee setInformationUpdateEmployee (String name, String surname, String position, double salary){
+    public Employee setInformationUpdateEmployee (String name, String surname, String position, Float salary){
         return employeeDao.setInformation(name, surname, position, salary );
     }
 

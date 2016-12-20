@@ -53,17 +53,23 @@ public class HEmployeeDao implements EmployeeDao {
     public void updateEmployee(Long id, Employee newEmployee) {
         Session session = sessionFactory.getCurrentSession();
         Employee employee = session.get(Employee.class, id);
+
+        employee.setName(newEmployee.getName());
+        employee.setSurname(newEmployee.getSurname());
+        employee.setPosition(newEmployee.getPosition());
+        employee.setSalary(newEmployee.getSalary());
+
         session.update(employee);
     }
 
     @Override
-    public Employee setInformation(String name, String surname, String position, double salary) {
+    public Employee setInformation(String name, String surname, String position, Float salary) {
 
         Employee employee = new Employee();
         employee.setName(name);
         employee.setSurname(surname);
         employee.setPosition(position);
-        employee.setSalary((float) salary);
+        employee.setSalary(salary);
 
         return employee;
     }

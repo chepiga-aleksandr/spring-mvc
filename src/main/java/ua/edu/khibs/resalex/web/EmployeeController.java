@@ -24,18 +24,19 @@ public class EmployeeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/employeeId={id}", method = RequestMethod.GET)
-    public ModelAndView adminEmployee(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("employee", employeeService.getEmployeeById(id));
-        modelAndView.setViewName("admin/employeeAdmin");
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/admin/employees", method = RequestMethod.GET)
     public String adminEmployees(Map<String, Object> model) {
         model.put("employees", employeeService.getEmployees());
         return "admin/employeesAdmin";
+    }
+
+    @RequestMapping(value = "/admin/update_EmployeeId={id}", method = RequestMethod.GET)
+    public ModelAndView updateEmployee(@PathVariable String id) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("employee", employeeService.getEmployeeById(Long.parseLong(id)));
+        modelAndView.setViewName("admin/employeeAdmin");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/admin/updateEmployeeId={id}", method = RequestMethod.POST)
@@ -43,7 +44,7 @@ public class EmployeeController {
                                                @RequestParam("employeeName") String name,
                                                @RequestParam("employeeSurname") String surame,
                                                @RequestParam("employeePosition") String position,
-                                               @RequestParam("employeeSalary") double salary) {
+                                               @RequestParam("employeeSalary") Float salary) {
         ModelAndView modelAndView = new ModelAndView();
         Employee updateEmployee = employeeService.setInformationUpdateEmployee(name, surame, position, salary);
         employeeService.updateEmployeeInfo(id, updateEmployee);
@@ -55,8 +56,6 @@ public class EmployeeController {
     @RequestMapping(value = "/admin/newEmployee", method = RequestMethod.GET)
     public ModelAndView addEmployeeForm() {
         ModelAndView modelAndView = new ModelAndView();
-
-
         modelAndView.setViewName("admin/newEmployee");
         return modelAndView;
     }

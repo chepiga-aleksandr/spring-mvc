@@ -23,8 +23,24 @@ public class DishController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/admin/dishes", method = RequestMethod.GET)
+    public ModelAndView getAllDishes() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("dishes", dishService.getAllDish());
+        modelAndView.setViewName("admin/dishesAdmin");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/dishId={id}", method = RequestMethod.GET)
+    public ModelAndView adminDish(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("dish", dishService.getDishById(id));
+        modelAndView.setViewName("admin/dishAdmin");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/admin/updateDishId={id}", method = RequestMethod.POST)
-    public ModelAndView updateDishInfo(@PathVariable Long id,
+    public ModelAndView updateExistingDish(@PathVariable Long id,
                                        @RequestParam("dishName") String name,
                                        @RequestParam("dishWeight") Integer weight,
                                        @RequestParam("dishPrice") Integer price) {
@@ -32,15 +48,7 @@ public class DishController {
         Dish updateDish = dishService.setInformationUpdateDish(name, weight, price);
         dishService.updateDishInfo(id, updateDish);
         modelAndView.addObject("dish", dishService.getDishById(id));
-        modelAndView.setViewName("redirect:..admin/dishes");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/admin/dishes", method = RequestMethod.GET)
-    public ModelAndView getAllDishes() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("dishes", dishService.getAllDish());
-        modelAndView.setViewName("/admin/dishes");
+        modelAndView.setViewName("admin/dishAdmin");
         return modelAndView;
     }
 
