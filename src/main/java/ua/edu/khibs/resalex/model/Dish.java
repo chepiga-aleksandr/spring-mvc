@@ -83,6 +83,12 @@ public class Dish {
         this.listOfIngredient = listOfIngredient;
     }
 
+    public void setInfo (String name, Integer weight, Integer price) {
+        this.name = name;
+        this.weight = weight;
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Dish{" +

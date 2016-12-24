@@ -26,7 +26,9 @@
                 <ul>
                     <li>${listOfIngredient.name}</li>
                 </ul>
+
             </c:forEach></td>
+
             <td>
                 <p><a href="/admin/update_DishId=${dish.id}">Edit</a></p>
                 <p><a href="/admin/deleteDishId=${dish.id}">Delete</a></p>

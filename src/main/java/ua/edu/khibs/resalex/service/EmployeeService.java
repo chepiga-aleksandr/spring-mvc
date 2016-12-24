@@ -26,13 +26,10 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void updateEmployeeInfo(Long id, Employee updateEmployee) {
-        employeeDao.updateEmployee(id, updateEmployee);
-    }
-
-    @Transactional
-    public Employee setInformationUpdateEmployee (String name, String surname, String position, Float salary){
-        return employeeDao.setInformation(name, surname, position, salary );
+    public void updateEmployeeInfo(Long id, String name, String surname, String position, Float salary, String login, String password, String role) {
+        Employee employee = employeeDao.findEmployeeById(id);
+        employee.setInfo(name, surname, position, salary, login, password, role);
+        employeeDao.updateEmployee(employee);
     }
 
     @Transactional
@@ -41,14 +38,16 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void addNewEmployee(String name, String surname, String position, Float salary) {
+    public void addNewEmployee(String name, String surname, String position, Float salary, String login, String password, String role) {
 
         Employee employee = new Employee();
         employee.setName(name);
         employee.setSurname(surname);
         employee.setPosition(position);
         employee.setSalary(salary);
-
+        employee.setLogin(login);
+        employee.setPassword(password);
+        employee.setRole(role);
         employeeDao.saveNewEmployee(employee);
     }
 

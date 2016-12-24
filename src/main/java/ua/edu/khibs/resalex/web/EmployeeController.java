@@ -7,14 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import ua.edu.khibs.resalex.model.Employee;
 import ua.edu.khibs.resalex.service.EmployeeService;
 
 import java.util.Map;
 
 @Controller
 public class EmployeeController {
-
     private EmployeeService employeeService;
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
@@ -33,7 +31,6 @@ public class EmployeeController {
     @RequestMapping(value = "/admin/update_EmployeeId={id}", method = RequestMethod.GET)
     public ModelAndView updateEmployee(@PathVariable String id) {
         ModelAndView modelAndView = new ModelAndView();
-
         modelAndView.addObject("employee", employeeService.getEmployeeById(Long.parseLong(id)));
         modelAndView.setViewName("admin/employeeAdmin");
         return modelAndView;
@@ -44,11 +41,12 @@ public class EmployeeController {
                                                @RequestParam("employeeName") String name,
                                                @RequestParam("employeeSurname") String surame,
                                                @RequestParam("employeePosition") String position,
-                                               @RequestParam("employeeSalary") Float salary) {
+                                               @RequestParam("employeeSalary") Float salary,
+                                               @RequestParam("employeeLogin") String login,
+                                               @RequestParam("employeePassword") String password,
+                                               @RequestParam("employeeRole") String role) {
         ModelAndView modelAndView = new ModelAndView();
-        Employee updateEmployee = employeeService.setInformationUpdateEmployee(name, surame, position, salary);
-        employeeService.updateEmployeeInfo(id, updateEmployee);
-        modelAndView.addObject("employee", employeeService.getEmployeeById(id));
+        employeeService.updateEmployeeInfo(id, name, surame, position, salary, login, password, role);
         modelAndView.setViewName("redirect:../admin/employees");
         return modelAndView;
     }
@@ -62,11 +60,14 @@ public class EmployeeController {
 
     @RequestMapping(value = "/admin/newEmployee", method = RequestMethod.POST)
     public ModelAndView addNewEmployee(@RequestParam("employeeName") String name,
-                                     @RequestParam("employeeSurname") String surame,
-                                     @RequestParam("employeePosition") String position,
-                                     @RequestParam("employeeSalary") Float salary) {
+                                       @RequestParam("employeeSurname") String surame,
+                                       @RequestParam("employeePosition") String position,
+                                       @RequestParam("employeeSalary") Float salary,
+                                       @RequestParam("employeeLogin") String login,
+                                       @RequestParam("employeePassword") String password,
+                                       @RequestParam("employeeRole") String role) {
         ModelAndView modelAndView = new ModelAndView();
-        employeeService.addNewEmployee(name, surame, position, salary);
+        employeeService.addNewEmployee(name, surame, position, salary, login, password, role);
         modelAndView.setViewName("redirect:../admin/employees");
         return modelAndView;
     }

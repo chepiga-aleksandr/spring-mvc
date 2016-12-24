@@ -5,28 +5,37 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name="employee")
+@Table(name = "employee")
 public class Employee {
 
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name="id")
+    @Column(name = "id")
     private long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="surname")
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name="position")
+    @Column(name = "position")
     private String position;
 
-    @Column(name="salary")
+    @Column(name = "salary")
     private Float salary;
 
-    @Column (name = "photo")
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "role")
+    private String role;
+
+    @Column(name = "photo")
     private String photo;
 
     public Long getId() {
@@ -69,6 +78,30 @@ public class Employee {
         this.salary = salary;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getPhoto() {
         return photo;
     }
@@ -77,27 +110,14 @@ public class Employee {
         this.photo = photo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Employee)) return false;
+    public void setInfo(String name, String surname, String position, Float salary, String login, String password, String role) {
 
-        Employee employee = (Employee) o;
-
-        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
-        if (surname != null ? !surname.equals(employee.surname) : employee.surname != null) return false;
-        if (position != employee.position) return false;
-        return salary != null ? salary.equals(employee.salary) : employee.salary == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (position != null ? position.hashCode() : 0);
-        result = 31 * result + (salary != null ? salary.hashCode() : 0);
-        return result;
+        this.name = name;
+        this.surname = surname;
+        this.position = position;
+        this.login = login;
+        this.password = password;
+        this.role = role;
     }
 
     @Override
@@ -108,6 +128,10 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", position='" + position + '\'' +
                 ", salary=" + salary +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }

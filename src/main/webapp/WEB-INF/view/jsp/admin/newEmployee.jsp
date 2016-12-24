@@ -24,6 +24,18 @@
             <td>Salary</td>
             <td><input autocomplete="off" type="number" name="employeeSalary" value=""></td>
         </tr>
+        <tr>
+            <td>Login</td>
+            <td><input autocomplete="off" type="text" name="employeeLogin" value=""></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input autocomplete="off" type="text" name="employeePassword" value=""></td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td><input autocomplete="off" type="text" name="employeeRole" value=""></td>
+        </tr>
 
     </table>
     <div class="employeeInformationSubmitButton">

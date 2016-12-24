@@ -1,30 +1,27 @@
 package ua.edu.khibs.resalex.Dao;
 
-import ua.edu.khibs.resalex.model.Dish;
+        import ua.edu.khibs.resalex.model.Dish;
 
-import java.util.List;
+        import java.util.List;
 
 public interface DishDao {
 
-//  Добавлять существующие блюда
-    void saveDish(Dish dish);
+    //  Добавлять существующие блюда
+    void saveNewDish(Dish dish);
 
-//  Просматривать существующие блюда
+    //  Просматривать существующие блюда
     List<Dish> findAllDishes();
 
-//  Удалять существующие блюда
-    void removeDish(Dish dish);
+    //  Удалять существующие блюда
+    void removeDish(Long id);
 
 // Редактировать существующие блюда
 
-    void updateDish (Long id, Dish newDish);
+    void updateDish (Dish dish);
 
     Dish findDishByName(String name);
 
-    Dish setInformation (String name, Integer weight, Integer price);
-
     Dish findDishById (Long id);
-
 }
 
 

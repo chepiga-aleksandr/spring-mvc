@@ -8,13 +8,16 @@
     <bean id="employeeService" class="ua.edu.khibs.resalex.service.EmployeeService"/>
     <bean id="employeeDao" class="ua.edu.khibs.resalex.Dao.hibernate.HEmployeeDao"/>
 
-    <bean id="restaurantService" class="ua.edu.khibs.resalex.service.RestaurantService" />
+    <bean id="restaurantService" class="ua.edu.khibs.resalex.service.RestaurantService"/>
     <bean id="restaurantDao" class="ua.edu.khibs.resalex.Dao.hibernate.HRestaurantDao"/>
 
-    <bean id="menuService" class="ua.edu.khibs.resalex.service.MenuService" />
-    <bean id="menuDao" class="ua.edu.khibs.resalex.Dao.hibernate.HMenuDao" />
+    <bean id="menuService" class="ua.edu.khibs.resalex.service.MenuService"/>
+    <bean id="menuDao" class="ua.edu.khibs.resalex.Dao.hibernate.HMenuDao"/>
 
-    <bean id="dishService" class="ua.edu.khibs.resalex.service.DishService" />
-    <bean id="dishDao" class="ua.edu.khibs.resalex.Dao.hibernate.HDishDao" />
+    <bean id="dishService" class="ua.edu.khibs.resalex.service.DishService"/>
+    <bean id="dishDao" class="ua.edu.khibs.resalex.Dao.hibernate.HDishDao"/>
+
+    <bean id="ingredientService" class="ua.edu.khibs.resalex.service.IngredientService"/>
+    <bean id="ingredientDao" class="ua.edu.khibs.resalex.Dao.hibernate.HIngredientDao"/>
 
 </beans>

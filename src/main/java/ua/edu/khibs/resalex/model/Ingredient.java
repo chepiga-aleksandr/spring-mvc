@@ -17,6 +17,9 @@ public class Ingredient {
     @Column(name = "name")
     private String name;
 
+    @Column (name = "amount")
+    private Integer amount;
+
     public Long getId() {
         return id;
     }
@@ -31,5 +34,13 @@ public class Ingredient {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }

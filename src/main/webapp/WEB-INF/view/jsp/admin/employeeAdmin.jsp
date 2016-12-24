@@ -23,6 +23,18 @@
             <td>Salary</td>
             <td><input autocomplete="off" type="number" name="employeeSalary" value="${employee.salary}"></td>
         </tr>
+        <tr>
+            <td>Login</td>
+            <td><input autocomplete="off" type="text" name="employeeLogin" value="${employee.login}"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input autocomplete="off" type="text" name="employeePassword" value="${employee.password}"></td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td><input autocomplete="off" type="text" name="employeeRole" value="${employee.role}"></td>
+        </tr>
 
     </table>
 

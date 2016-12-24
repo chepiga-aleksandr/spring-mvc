@@ -18,7 +18,5 @@ public interface EmployeeDao {
 
     Employee findEmployeeById (Long id);
 
-    void updateEmployee (Long id, Employee updateEmployee);
-
-    Employee setInformation (String name, String surname, String position, Float salary);
+    void updateEmployee (Employee employee);
 }

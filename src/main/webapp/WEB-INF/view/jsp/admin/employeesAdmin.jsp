@@ -12,6 +12,9 @@
         <th>Last Name</th>
         <th>Position</th>
         <th>Salary</th>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Role</th>
         <th>Photo</th>
         <th>Action</th>
     </tr>
@@ -21,10 +24,13 @@
             <td>${employee.surname}</td>
             <td>${employee.position}</td>
             <td>${employee.salary}</td>
+            <td>${employee.login}</td>
+            <td>${employee.password}</td>
+            <td>${employee.role}</td>
             <td><img src="${employee.photo}" width="100"></td>
             <td>
-            <p><a href="/admin/update_EmployeeId=${employee.id}">Edit</a></p>
-            <p><a href="/admin/deleteEmployeeId=${employee.id}">Delete</a></p>
+                <p><a href="/admin/update_EmployeeId=${employee.id}">Edit</a></p>
+                <p><a href="/admin/deleteEmployeeId=${employee.id}">Delete</a></p>
             </td>
         </tr>
     </c:forEach>
