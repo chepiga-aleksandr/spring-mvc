@@ -13,20 +13,17 @@ public class IngredientService {
     public Set<Ingredient> getAllIngredient() {
         return ingredientDao.findAllIngredient();
     }
+
     @Transactional
-    public void addNewIngredient (String name, Integer amount) {
-
+    public void addNewIngredient(String name, Integer amount) {
         Ingredient newIngredient = new Ingredient();
-
         newIngredient.setName(name);
         newIngredient.setAmount(amount);
-
         ingredientDao.addNewIngredient(newIngredient);
-
     }
 
     @Transactional
     public void setIngredientDao(IngredientDao ingredientDao) {
         this.ingredientDao = ingredientDao;
-            }
+    }
 }

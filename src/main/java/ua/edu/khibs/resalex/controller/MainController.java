@@ -1,4 +1,4 @@
-package ua.edu.khibs.resalex.web;
+package ua.edu.khibs.resalex.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +27,9 @@ public class MainController {
         model.put("allDishes", dishService.getAllDish());
         return "index";
     }
+
+
+
 
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {

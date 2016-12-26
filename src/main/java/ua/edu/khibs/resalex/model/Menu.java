@@ -50,6 +50,10 @@ public class Menu {
         this.listOfDishes = listOfDishes;
     }
 
+    public void setInfo (String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "Menu{" +

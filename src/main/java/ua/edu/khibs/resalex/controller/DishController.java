@@ -1,4 +1,4 @@
-package ua.edu.khibs.resalex.web;
+package ua.edu.khibs.resalex.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,9 +90,7 @@ public class DishController {
         String name = request.getParameter("dishName");
         Integer weight = Integer.parseInt(request.getParameter("dishWeight"));
         Integer price = Integer.parseInt(request.getParameter("dishPrice"));
-
         dishService.addNewDish(name, weight, price, ingredients);
-
         String[] ingrs = request.getParameterValues("ingr");
         if(ingrs != null) {
             dishService.addIngredientToDish(name, ingrs);

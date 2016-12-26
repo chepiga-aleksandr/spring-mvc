@@ -33,11 +33,8 @@
             <ul>
                 <li>${listOfIngredient.name}</li>
             </ul>
-
         </c:forEach></td>
-
     </tr>
-
 </table>
 
 <button>Submit</button>

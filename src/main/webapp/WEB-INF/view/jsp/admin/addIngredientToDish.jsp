@@ -13,6 +13,5 @@
     </c:forEach>
     <p><input type="submit" value="Add ingredient to dish"></p>
 </form>
-<button onclick="location.href='/admin/addIngredientToList'">Add ingredient to list</button>
 </body>
 </html>
