@@ -48,6 +48,23 @@ public class DishService {
         return dishDao.findAllDishes();
     }
 
+
+    @Transactional
+    public void deleteIngredientFromDish(String dishName, String[] ingredientToDelete) {
+        Dish dish = dishDao.findDishByName(dishName);
+
+        List<Ingredient> dishIngredient = dish.getListOfIngredient();
+
+        for (String ingredientName : ingredientToDelete) {
+
+            Ingredient ingredient = ingredientDao.findIngredientByName(ingredientName);
+            dishIngredient.remove(ingredient);
+        }
+        dish.setListOfIngredient(dishIngredient);
+        dishDao.updateDish(dish);
+    }
+
+
     @Transactional
     public Dish getDishByName(String dishName) {
         return dishDao.findDishByName(dishName);

@@ -115,6 +115,7 @@ public class Employee {
         this.name = name;
         this.surname = surname;
         this.position = position;
+        this.salary = salary;
         this.login = login;
         this.password = password;
         this.role = role;

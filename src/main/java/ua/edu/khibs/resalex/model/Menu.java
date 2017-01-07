@@ -24,6 +24,7 @@ public class Menu {
             joinColumns = @JoinColumn(name = "menu_id"),
             inverseJoinColumns = @JoinColumn (name = "dish_id")
     )
+
     private List<Dish> listOfDishes;
 
     public Long getId() {

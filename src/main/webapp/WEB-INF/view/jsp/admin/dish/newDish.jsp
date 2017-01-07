@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/admin/newDish" method="post">
+<form action="/admin/dish/newDish" method="post">
     <table>
         <tr>
             <td>Name</td>

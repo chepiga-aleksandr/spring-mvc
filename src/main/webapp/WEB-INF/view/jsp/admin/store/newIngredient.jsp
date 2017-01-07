@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/admin/addIngredientToList" method="post">
+<form action="/admin/store/createNewIngredient" method="post">
     <table>
         <tr>
             <td>Name</td>

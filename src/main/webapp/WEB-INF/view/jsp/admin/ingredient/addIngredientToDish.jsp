@@ -7,7 +7,7 @@
 <body>
 <p>Add ingredients to dish ${dishName}</p>
 <p>Select ingredients to add:</p>
-<form action="/admin/addIngredientToDish/${dishName}" method="post">
+<form action="/admin/dish/addIngredientToDish/${dishName}" method="post">
     <c:forEach items="${ingredientsToAdd}" var="ingr">
         <p><input type="checkbox" name="ingredient" value="${ingr.name}">${ingr.name}</p>
     </c:forEach>

@@ -9,12 +9,18 @@
 <table border="1">
     <tr>
         <th><h1>${restaurant.name}</h1><br>
-        ${restaurant.address}   ${restaurant.eMail}   ${restaurant.phoneNumber}<br>
+        ${restaurant.address}${restaurant.eMail}${restaurant.phoneNumber}<br>
         <a href="restaurant">Restaurant scheme</a><br>
         <a href="employees">Our Employees</a></th>
     </tr>
 </table>
 <br>
+
+<form action="${pageContext.request.contextPath}/authenticationUser" method="POST">
+    <p>LOGIN:    <input type="text" name="login"></p>
+    <p>PASSWORD: <input type="text" name="password"></p>
+    <input type="submit" value="SUBMIT"/>
+</form><br>
 
 <table border="1" style="align-content: center">
     <tr>

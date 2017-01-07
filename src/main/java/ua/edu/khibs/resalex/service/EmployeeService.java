@@ -33,7 +33,7 @@ public class EmployeeService {
     }
 
     @Transactional
-    public void deleteEmployee (Employee employee) {
+    public void deleteEmployee(Employee employee) {
         employeeDao.removeEmployee(employee);
     }
 
@@ -49,6 +49,11 @@ public class EmployeeService {
         employee.setPassword(password);
         employee.setRole(role);
         employeeDao.saveNewEmployee(employee);
+    }
+
+    @Transactional
+    public String getAuthenticationUserRole(String login, String password) {
+        return employeeDao.authenticationUser(login, password);
     }
 
     @Transactional

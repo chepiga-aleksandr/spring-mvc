@@ -14,7 +14,6 @@ public class HMenuDao implements MenuDao {
 
     @Override
     public List<Menu> findAllMenu() {
-
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select m from Menu m", Menu.class).list();
     }
@@ -39,12 +38,10 @@ public class HMenuDao implements MenuDao {
     public void saveNewMenu(Menu menu) {
         Session session = sessionFactory.getCurrentSession();
         session.save(menu);
-
     }
 
     @Override
     public void updateMenu(Menu menu) {
-
         Session session = sessionFactory.getCurrentSession();
         session.update(menu);
     }

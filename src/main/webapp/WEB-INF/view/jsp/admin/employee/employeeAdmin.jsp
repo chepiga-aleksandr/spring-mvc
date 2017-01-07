@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form action="/admin/updateEmployeeId=${employee.id}" method="post">
+<form action="/admin/employee/updateEmployeeId=${employee.id}" method="post">
     <table>
         <tr>
             <td>Name</td>

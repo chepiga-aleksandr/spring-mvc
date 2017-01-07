@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/admin/menu/newMenu" method="post">
+<form action="${pageContext.request.contextPath}/admin/menu/newMenu" method="post">
     <table border="1">
         <tr>
             <td>Name</td>

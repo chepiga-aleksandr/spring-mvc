@@ -29,15 +29,15 @@
             <td>${employee.role}</td>
             <td><img src="${employee.photo}" width="100"></td>
             <td>
-                <p><a href="/admin/update_EmployeeId=${employee.id}">Edit</a></p>
-                <p><a href="/admin/deleteEmployeeId=${employee.id}">Delete</a></p>
+                <p><a href="/admin/employee/update_EmployeeId=${employee.id}">Edit</a></p>
+                <p><a href="/admin/employee/deleteEmployeeId=${employee.id}">Delete</a></p>
             </td>
         </tr>
     </c:forEach>
 </table>
 <br>
 
-<button onclick="location.href='/admin/newEmployee'">Create new employee</button>
+<button onclick="location.href='/admin/employee/newEmployee'">Create new employee</button>
 
 </body>
 </html>

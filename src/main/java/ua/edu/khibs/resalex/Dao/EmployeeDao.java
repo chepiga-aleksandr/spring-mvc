@@ -8,8 +8,6 @@ public interface EmployeeDao {
 
     void saveNewEmployee(Employee employee);
 
-    Employee loadEmployee(Long id);
-
     List<Employee> findAllEmployees();
 
     void removeEmployee(Employee employee);
@@ -19,4 +17,6 @@ public interface EmployeeDao {
     Employee findEmployeeById (Long id);
 
     void updateEmployee (Employee employee);
+
+    String authenticationUser (String login, String password);
 }

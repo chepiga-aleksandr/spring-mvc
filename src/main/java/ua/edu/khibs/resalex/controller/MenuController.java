@@ -70,6 +70,7 @@ public class MenuController {
 
     @RequestMapping (value = "/admin/menu/newMenu", method = RequestMethod.GET)
     public ModelAndView addMenuForm() {
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("dishes", dishService.getAllDish());
         modelAndView.setViewName("admin/menu/newMenu");
@@ -77,22 +78,23 @@ public class MenuController {
     }
 
     @RequestMapping (value = "/admin/menu/newMenu", method = RequestMethod.POST)
-    public ModelAndView addMenu (HttpServletRequest request) {
+    public ModelAndView addNewMenu(HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView();
 
         List<Dish> dishes = new ArrayList<>();
+
         String name = request.getParameter("menuName");
         menuService.addNewMenu(name,dishes);
-        String[] dishString = request.getParameterValues("dishes");
+        String[] dishString = request.getParameterValues("dish");
 
         if(dishString!= null) {
             menuService.addDishToMenu(name, dishString);
         }
         modelAndView.setViewName("redirect:../menu/menuAdmin");
         return modelAndView;
-
     }
+
     @Autowired
     public void setDishService(DishService dishService) {
         this.dishService = dishService;

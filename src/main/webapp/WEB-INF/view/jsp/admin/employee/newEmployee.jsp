@@ -6,7 +6,7 @@
 <body>
 
 
-<form action="/admin/newEmployee" method="post">
+<form action="/admin/employee/newEmployee" method="post">
     <table>
         <tr>
             <td>Name</td>

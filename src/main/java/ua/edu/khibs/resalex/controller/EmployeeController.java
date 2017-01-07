@@ -22,21 +22,21 @@ public class EmployeeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/employees", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/employee/employees", method = RequestMethod.GET)
     public String adminEmployees(Map<String, Object> model) {
         model.put("employees", employeeService.getEmployees());
-        return "admin/employeesAdmin";
+        return "admin/employee/employeesAdmin";
     }
 
-    @RequestMapping(value = "/admin/update_EmployeeId={id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/employee/update_EmployeeId={id}", method = RequestMethod.GET)
     public ModelAndView updateEmployee(@PathVariable String id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("employee", employeeService.getEmployeeById(Long.parseLong(id)));
-        modelAndView.setViewName("admin/employeeAdmin");
+        modelAndView.setViewName("admin/employee/employeeAdmin");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/updateEmployeeId={id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/employee/updateEmployeeId={id}", method = RequestMethod.POST)
     public ModelAndView updateExistingEmployee(@PathVariable Long id,
                                                @RequestParam("employeeName") String name,
                                                @RequestParam("employeeSurname") String surame,
@@ -47,18 +47,18 @@ public class EmployeeController {
                                                @RequestParam("employeeRole") String role) {
         ModelAndView modelAndView = new ModelAndView();
         employeeService.updateEmployeeInfo(id, name, surame, position, salary, login, password, role);
-        modelAndView.setViewName("redirect:../admin/employees");
+        modelAndView.setViewName("redirect:../employee/employees");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/newEmployee", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/employee/newEmployee", method = RequestMethod.GET)
     public ModelAndView addEmployeeForm() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("admin/newEmployee");
+        modelAndView.setViewName("admin/employee/newEmployee");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/newEmployee", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/employee/newEmployee", method = RequestMethod.POST)
     public ModelAndView addNewEmployee(@RequestParam("employeeName") String name,
                                        @RequestParam("employeeSurname") String surame,
                                        @RequestParam("employeePosition") String position,
@@ -68,17 +68,17 @@ public class EmployeeController {
                                        @RequestParam("employeeRole") String role) {
         ModelAndView modelAndView = new ModelAndView();
         employeeService.addNewEmployee(name, surame, position, salary, login, password, role);
-        modelAndView.setViewName("redirect:../admin/employees");
+        modelAndView.setViewName("redirect:../employee/employees");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/deleteEmployeeId={id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/employee/deleteEmployeeId={id}", method = RequestMethod.GET)
     public ModelAndView deleteEmployee(@PathVariable Long id) {
 
         ModelAndView modelAndView = new ModelAndView();
         employeeService.deleteEmployee(employeeService.getEmployeeById(id));
         modelAndView.addObject("employees", employeeService.getEmployees());
-        modelAndView.setViewName("admin/employeesAdmin");
+        modelAndView.setViewName("admin/employee/employeesAdmin");
         return modelAndView;
     }
 

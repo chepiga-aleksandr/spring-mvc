@@ -19,15 +19,6 @@ public class HEmployeeDao implements EmployeeDao {
     }
 
     @Override
-    public Employee loadEmployee(Long id) {
-        Employee result = sessionFactory.getCurrentSession().load(Employee.class, id);
-        if (result == null) {
-            throw new RuntimeException("Cannot find Employee by id: " + id);
-        }
-        return result;
-    }
-
-    @Override
     public List findAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select e from Employee e").list();
@@ -53,6 +44,15 @@ public class HEmployeeDao implements EmployeeDao {
     public void updateEmployee(Employee employee) {
         Session session = sessionFactory.getCurrentSession();
         session.update(employee);
+    }
+
+    @Override
+    public String authenticationUser(String login, String password) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select e.role from Employee e where e.login like :login and e.password like :password");
+        query.setParameter("login", login);
+        query.setParameter("password", password);
+        return (String) query.uniqueResult();
     }
 
     @Override

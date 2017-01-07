@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/admin/updateDishId=${dish.id}" method="post">
+<form action="/admin/dish/updateDishId=${dish.id}" method="post">
 <table border="1">
     <tr>
         <td>Name</td>
@@ -27,7 +27,9 @@
     <tr>
         <td>List of ingredients<br>
 
-        <p><a href="/admin/addIngredientToDish/${dish.name}">Add ingredients</a></p></td>
+        <p><a href="/admin/dish/addIngredientToDish/${dish.name}">Add ingredients</a></p>
+
+        <p><a href="/admin/dish/deleteIngredientFromDish/${dish.name}">Delete ingredients</a></p></td>
 
         <td><c:forEach items="${dish.listOfIngredient}" var="listOfIngredient">
             <ul>

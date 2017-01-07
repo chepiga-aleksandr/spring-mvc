@@ -23,6 +23,25 @@ public class IngredientService {
     }
 
     @Transactional
+    public Ingredient getIngredientById (Long id) {
+        return ingredientDao.findIngredientById(id);
+    }
+
+    @Transactional
+    public void updateIngredientInfo (Long id, String name, Integer amount) {
+        Ingredient updateIngredient = ingredientDao.findIngredientById(id);
+        updateIngredient.setId(id);
+        updateIngredient.setName(name);
+        updateIngredient.setAmount(amount);
+        ingredientDao.updateIngredient(updateIngredient);
+    }
+
+    @Transactional
+    public void deleteIngredientFromStore (Ingredient ingredient) {
+        ingredientDao.deleteIngredient(ingredient);
+    }
+
+    @Transactional
     public void setIngredientDao(IngredientDao ingredientDao) {
         this.ingredientDao = ingredientDao;
     }

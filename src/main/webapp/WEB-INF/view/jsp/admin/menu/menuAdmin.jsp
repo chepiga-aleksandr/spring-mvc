@@ -15,8 +15,6 @@
         <tr>
             <td>${menu.name}<br><a href="/admin/updateMenuId=${menu.id}">Edit</a></td>
 
-            /admin/updateMenuId={id}
-
             <td>
                 <c:forEach items="${menu.listOfDishes}" var="dish">
                     <ul>

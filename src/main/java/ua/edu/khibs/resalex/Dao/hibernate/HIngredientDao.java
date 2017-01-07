@@ -17,7 +17,7 @@ public class HIngredientDao implements IngredientDao {
 
     @Override
     public Set<Ingredient> findAllIngredient() {
-        List<Ingredient> ingredientList = new ArrayList<>();
+//        List<Ingredient> ingredientList = new ArrayList<>();
         Session session = sessionFactory.getCurrentSession();
         return new HashSet<>(session.createQuery("select i from Ingredient i", Ingredient.class).list());
     }
@@ -34,6 +34,26 @@ public class HIngredientDao implements IngredientDao {
     public void addNewIngredient(Ingredient ingredient) {
         Session session = sessionFactory.getCurrentSession();
         session.save(ingredient);
+    }
+
+    @Override
+    public Ingredient findIngredientById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select i from Ingredient i where i.id = :id");
+        query.setParameter("id", id);
+        return (Ingredient) query.uniqueResult();
+    }
+
+    @Override
+    public void updateIngredient(Ingredient ingredient) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(ingredient);
+    }
+
+    @Override
+    public void deleteIngredient(Ingredient ingredient) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(ingredient);
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

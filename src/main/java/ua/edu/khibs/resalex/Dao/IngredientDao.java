@@ -10,5 +10,11 @@ public interface IngredientDao {
 
     Ingredient findIngredientByName (String name);
 
+    Ingredient  findIngredientById (Long id);
+
+    void updateIngredient (Ingredient ingredient);
+
     void  addNewIngredient (Ingredient ingredient);
+
+    void deleteIngredient (Ingredient ingredient);
 }

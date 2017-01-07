@@ -21,22 +21,40 @@ public class DishController {
     private DishService dishService;
     private IngredientService ingredientService;
 
-    @RequestMapping(value = "/admin/addIngredientToDish/{dishName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/dish/addIngredientToDish/{dishName}", method = RequestMethod.GET)
     public ModelAndView addIngredientForm(@PathVariable String dishName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("ingredientsToAdd", dishService.getIngredientToAddToDish(dishName));
         modelAndView.addObject("dishName", dishName);
-        modelAndView.setViewName("/admin/addIngredientToDish");
+        modelAndView.setViewName("admin/ingredient/addIngredientToDish");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/addIngredientToDish/{dishName}", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/dish/addIngredientToDish/{dishName}", method = RequestMethod.POST)
     public ModelAndView addIngredientToDish(HttpServletRequest request, @PathVariable String dishName) {
         ModelAndView modelAndView = new ModelAndView();
         String[] ingredientsToAdd = request.getParameterValues("ingredient");
         dishService.addIngredientToDish(dishName, ingredientsToAdd);
         modelAndView.setViewName("redirect:../dishes");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/dish/deleteIngredientFromDish/{dishName}", method = RequestMethod.GET)
+    public ModelAndView deleteIngredientForm(@PathVariable String dishName) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("ingredientsToDelete", dishService.getDishByName(dishName).getListOfIngredient());
+        modelAndView.addObject("dishName", dishName);
+        modelAndView.setViewName("admin/ingredient/deleteIngredientFromDish");
+        return modelAndView;
+    }
+
+    @RequestMapping (value = "/admin/dish/deleteIngredientFromDish/{dishName}", method = RequestMethod.POST)
+    public ModelAndView deleteIngredientFromDish (HttpServletRequest request, @PathVariable String dishName){
+        ModelAndView modelAndView = new ModelAndView();
+    String [] ingredientToDelete = request.getParameterValues("ingredient");
+    dishService.deleteIngredientFromDish(dishName, ingredientToDelete);
+    modelAndView.setViewName("redirect:../dishes");
+    return modelAndView;
     }
 
     @RequestMapping(value = "/dish", method = RequestMethod.GET)
@@ -47,42 +65,42 @@ public class DishController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/dishes", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/dish/dishes", method = RequestMethod.GET)
     public ModelAndView getAllDishes() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("dishes", dishService.getAllDish());
-        modelAndView.setViewName("admin/dishesAdmin");
+        modelAndView.setViewName("admin/dish/dishesAdmin");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/update_DishId={id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/dish/update_DishId={id}", method = RequestMethod.GET)
     public ModelAndView updateDish(@PathVariable String id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("dish", dishService.getDishById(Long.parseLong(id)));
-        modelAndView.setViewName("admin/dishAdmin");
+        modelAndView.setViewName("admin/dish/dishAdmin");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/updateDishId={id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/dish/updateDishId={id}", method = RequestMethod.POST)
     public ModelAndView updateExistingDish(@PathVariable Long id,
                                            @RequestParam("dishName") String name,
                                            @RequestParam("dishWeight") Integer weight,
                                            @RequestParam("dishPrice") Integer price) {
         ModelAndView modelAndView = new ModelAndView();
         dishService.updateDishInfo(id, name, weight, price);
-        modelAndView.setViewName("redirect:../admin/dishes");
+        modelAndView.setViewName("redirect:../admin/dish/dishes");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/newDish", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/dish/newDish", method = RequestMethod.GET)
     public ModelAndView addEmployeeForm() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("ingredients", ingredientService.getAllIngredient());
-        modelAndView.setViewName("admin/newDish");
+        modelAndView.setViewName("admin/dish/newDish");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/newDish", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/dish/newDish", method = RequestMethod.POST)
     public ModelAndView addNewDish(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
 
@@ -95,25 +113,22 @@ public class DishController {
         if(ingrs != null) {
             dishService.addIngredientToDish(name, ingrs);
         }
-
-        modelAndView.setViewName("redirect:../admin/dishes");
+        modelAndView.setViewName("redirect:../dish/dishes");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/deleteDishId={id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/dish/deleteDishId={id}", method = RequestMethod.GET)
     public ModelAndView deleteDish(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView();
         dishService.deleteDish(id);
         modelAndView.addObject("dishes", dishService.getAllDish());
-        modelAndView.setViewName("admin/dishesAdmin");
+        modelAndView.setViewName("admin/dish/dishesAdmin");
         return modelAndView;
     }
-
     @Autowired
     public void setDishService(DishService dishService) {
         this.dishService = dishService;
     }
-
     @Autowired
     public void setIngredientService(IngredientService ingredientService) {
         this.ingredientService = ingredientService;
