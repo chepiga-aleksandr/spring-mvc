@@ -20,4 +20,7 @@
     <bean id="ingredientService" class="ua.edu.khibs.resalex.service.IngredientService"/>
     <bean id="ingredientDao" class="ua.edu.khibs.resalex.Dao.hibernate.HIngredientDao"/>
 
+    <bean id = "ordersService" class = "ua.edu.khibs.resalex.service.OrdersService"/>
+    <bean id = "ordersDao" class = "ua.edu.khibs.resalex.Dao.hibernate.HOrdersDao"/>
+
 </beans>

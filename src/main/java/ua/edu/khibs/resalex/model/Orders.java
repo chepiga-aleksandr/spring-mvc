@@ -4,10 +4,11 @@ package ua.edu.khibs.resalex.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 
 @Entity
-@Table (name = "orders")
+@Table(name = "orders")
 public class Orders {
 
     @Id
@@ -16,19 +17,21 @@ public class Orders {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "employee_id", referencedColumnName = "id")
-    private Integer employeeId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
-@ManyToMany
-@JoinColumn (name = "dish_to_orders", referencedColumnName = "")
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(name = "orders_to_dish",
+            joinColumns = @JoinColumn(name = "orders_id"),
+            inverseJoinColumns = @JoinColumn(name = "dish_id")
+    )
+    private List<Dish> listOfDishInOrder;
 
-    private Integer dishToOrder;
+    @Column(name = "table_number")
+    private Integer numberOfTable;
 
-    @Column (name = "table_number")
-    private Integer numberOgTable;
-
-    @Column (name = "order_date")
+    @Column(name = "order_date")
     private Date orderDate;
 
     public Long getId() {
@@ -39,28 +42,28 @@ public class Orders {
         this.id = id;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public Integer getDishToOrder() {
-        return dishToOrder;
+    public List<Dish> getListOfDishInOrder() {
+        return listOfDishInOrder;
     }
 
-    public void setDishToOrder(Integer dishToOrder) {
-        this.dishToOrder = dishToOrder;
+    public void setListOfDishInOrder(List<Dish> listOfDishInOrder) {
+        this.listOfDishInOrder = listOfDishInOrder;
     }
 
-    public Integer getNumberOgTable() {
-        return numberOgTable;
+    public Integer getNumberOfTable() {
+        return numberOfTable;
     }
 
-    public void setNumberOgTable(Integer numberOgTable) {
-        this.numberOgTable = numberOgTable;
+    public void setNumberOfTable(Integer numberOfTable) {
+        this.numberOfTable = numberOfTable;
     }
 
     public Date getOrderDate() {
@@ -69,16 +72,5 @@ public class Orders {
 
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "id=" + id +
-                ", employeeId=" + employeeId +
-                ", dishToOrder=" + dishToOrder +
-                ", numberOgTable=" + numberOgTable +
-                ", orderDate=" + orderDate +
-                '}';
     }
 }

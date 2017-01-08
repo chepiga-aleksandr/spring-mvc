@@ -15,7 +15,9 @@ public class HDishDao implements DishDao {
     @Override
     public List<Dish> findAllDishes() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("select d from Dish d", Dish.class).list();
+        List<Dish> dishes = session.createQuery("select d from Dish d", Dish.class).list();
+        session.clear();
+        return dishes;
     }
 
     @Override
@@ -48,8 +50,7 @@ public class HDishDao implements DishDao {
 
     @Override
     public void removeDish(Long id) {
-//        sessionFactory.getCurrentSession().delete(dish);
-           Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("delete from Dish d where d.id = :id");
         query.setParameter("id", id).executeUpdate();
     }
