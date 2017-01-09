@@ -17,7 +17,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Controller
 public class OrdersController {
 
@@ -76,17 +75,50 @@ public class OrdersController {
             Dish dish = dishService.getDishByName(dishName);
             dishes.add(dish);
         }
-
         ordersService.createNewOrders(employee, numberOfTable, dateOfOrders, dishes);
         modelAndView.setViewName("redirect:/admin/orders/orders");
         return modelAndView;
     }
 
-    @RequestMapping (value = "/admin/orders/deleteOrderId={id}", method = RequestMethod.GET)
-    public ModelAndView deleteOrders (@PathVariable Long id) {
+    @RequestMapping(value = "/admin/orders/deleteOrderId={id}", method = RequestMethod.GET)
+    public ModelAndView deleteOrders(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView();
         ordersService.deleteOrders(id);
-//        modelAndView.addObject("orders", ordersService.getAllOrders());
+        modelAndView.setViewName("redirect:/admin/orders/orders");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/dish/deleteDishFromOrders={id}", method = RequestMethod.GET)
+    public ModelAndView deleteDishFromOrdersForm(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("listDishes", ordersService.getOrdersById(id).getListOfDishInOrder());
+        modelAndView.setViewName("/admin/dish/deleteDishFromOrders");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/dish/deleteDishFromOrders={id}", method = RequestMethod.POST)
+    public ModelAndView deleteDishFromOrders(@PathVariable Long id,
+                                             @RequestParam ("dish") String[] listOfDishesToDelete) {
+        ModelAndView modelAndView = new ModelAndView();
+        ordersService.deleteDishInOrders(id, listOfDishesToDelete);
+        modelAndView.addObject("listDishes", ordersService.getOrdersById(id).getListOfDishInOrder());
+        modelAndView.setViewName("redirect:/admin/orders/orders");
+        return modelAndView;
+    }
+
+    @RequestMapping (value = "/admin/dish/addDishToOrder={id}", method = RequestMethod.GET)
+    public ModelAndView addDishToOrderForm (@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject ("allDish", dishService.getAllDish());
+        modelAndView.setViewName("/admin/dish/addDishToOrder");
+        return modelAndView;
+    }
+
+    @RequestMapping (value = "/admin/dish/addDishToOrder={id}", method = RequestMethod.POST)
+    public ModelAndView addDishToOrder (@PathVariable Long id,
+                                        @RequestParam ("dishToAdd") String [] dishToOrder) {
+        ModelAndView modelAndView = new ModelAndView();
+        ordersService.addDishToOrder(id, dishToOrder);
         modelAndView.setViewName("redirect:/admin/orders/orders");
         return modelAndView;
     }

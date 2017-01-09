@@ -33,9 +33,9 @@
         <tr>
             <td>List of dishes<br>
 
-                <p><a href="/admin/orders/addDishesToOrders/${orders.id}">Add dish</a></p>
+                <p><a href="/admin/dish/addDishToOrder=${orders.id}">Add dish</a></p>
 
-                <p><a href="/admin/orders/deleteDishFromOrders/${orders.id}">Delete dish</a></p></td>
+                <p><a href="/admin/dish/deleteDishFromOrders=${orders.id}">Delete dish</a></p></td>
 
             <td><c:forEach items="${orders.listOfDishInOrder}" var="listOfDishes">
                 <ul>
